@@ -21,4 +21,3 @@ export const Connection = () => {
         console.log('Error while connecting the database', error.message);
     });
 }
-//db
