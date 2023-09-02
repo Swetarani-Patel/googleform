@@ -20,7 +20,5 @@ export const formattedFormKeyMap = {
   paidGicAmout: "Amount Paid Towards GIC",
 };
 
-export const formattedFormValueMap = {
-  true: "Yes",
-  false: "No"
-}
+export const formatFormValue = (value) =>
+  value === true ? "Yes" : value === false ? "No" : value;

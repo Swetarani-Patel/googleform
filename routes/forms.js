@@ -1,7 +1,7 @@
 import express from "express";
 import Form from "../models/Form.js";
 import { sendEmail } from "../services/mail.js";
-import { formattedFormKeyMap, formattedFormValueMap } from "../helpers/email.js";
+import { formattedFormKeyMap, formatFormValue } from "../helpers/email.js";
 
 export const formsRouter = express.Router();
 
@@ -23,7 +23,10 @@ formsRouter.post("/", async (req, res) => {
      ${body}
      <br>
       ${Object.keys(data)
-        .map((key) => `<p>${formattedFormKeyMap[key]}: ${formattedFormValueMap[data[key]] ?? data[key]}</p>`)
+        .map(
+          (key) =>
+            `<p>${formattedFormKeyMap[key]}: ${formatFormValue(data[key])}</p>`
+        )
         .join("")}
       <br>
        Please let us know if you have any further questions or if you'd like to avail of our additional services.
