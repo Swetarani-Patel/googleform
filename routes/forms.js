@@ -6,9 +6,11 @@ import { formattedFormKeyMap, formattedFormValueMap } from "../helpers/email.js"
 export const formsRouter = express.Router();
 
 formsRouter.post("/", async (req, res) => {
-  const data = req.body;
   try {
-    const response = await Form.create(data);
+    const data = await Form.create(req.body);
+
+    if (!data?._id) throw "Could not create form!";
+
     const header = `Your Customized Statement of Purpose (SOP)`;
     const body = `
     Dear ${data.fullName},
@@ -33,8 +35,8 @@ formsRouter.post("/", async (req, res) => {
     </div>`;
 
     sendEmail(data.email, header, html);
-    res.json({ success: true, response });
+    res.json({ success: true, data });
   } catch (error) {
-    res.json({ success: false });
+    res.json({ success: false, error });
   }
 });
