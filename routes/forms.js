@@ -22,10 +22,10 @@ formsRouter.post("/", async (req, res) => {
     <div>
      ${body}
      <br>
-      ${Object.keys(data)
+      ${Object.keys(req.body)
         .map(
           (key) =>
-            `<p>${formattedFormKeyMap[key]}: ${formatFormValue(data[key])}</p>`
+            `<p>${formattedFormKeyMap[key]}: ${formatFormValue(data._doc[key])}</p>`
         )
         .join("")}
       <br>
