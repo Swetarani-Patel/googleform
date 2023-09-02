@@ -19,3 +19,8 @@ export const formattedFormKeyMap = {
   isGic: "GIC (Guaranteed Investment Certificate)",
   paidGicAmout: "Amount Paid Towards GIC",
 };
+
+export const formattedFormValueMap = {
+  true: "Yes",
+  false: "No"
+}
