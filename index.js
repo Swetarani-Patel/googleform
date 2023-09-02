@@ -3,7 +3,7 @@ import { Connection } from "./database/db.js";
 import cors from "cors";
 import { formsRouter } from "./routes/forms.js";
 
-const app = express();
+const app = express(); // app
 app.use(cors());
 
 app.use(express.json());
